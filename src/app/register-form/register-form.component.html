@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LitmusDX</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" />
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Philosopher" />
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!-- <app-default-header ></app-default-header> -->
+<header>
+		<div class="header">
+			<nav class="navbar fixed-top navbar-light">
+				<div class="col-md-4 brand-container">
+					<a class="navbar-brand clearfix" href="#">		
+						<img src="../../assets/images/hellolyf.svg" width="175px" height="auto" />		
+					</a>
+					<ul class="logo-part">
+					<li class="helpline-number"><img src="../../assets/images/icon/icon-phone.svg" width="14px" height="auto"/><a href="tel:18001234425">1800 1234 425</a></li>
+					<li class="helpline-mail"><img src="../../assets/images/icon/icon-email.svg" width="14x" height="auto"/><a href="mailto:crmhead@glocal.healthcare">crmhead@glocal.healthcare</a></li>
+					</ul>
+				</div>	  
+			</nav>
+		</div>
+	</header> 
+<div class="content-block">
+
+<form id="registration" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+<div class="container">
+  <div class="row">
+	<div class="col-md-4 left-column">
+	 <h2 class="intro-text"><span>The presence of a doctor is the beginning of the cure</span></h2>
+	</div>
+	<div class="col-md-8">
+	 <h4>Physician Registration</h4>
+	 <div class="registration-formHolder">
+	 
+	 <div class="form-group">
+		<div class="row">	
+			<div class="col-sm-6">
+				<label for="" class="">First Name</label> <span class="required-icon">*</span>
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon">Dr.</span>
+					</div>		
+					<input type="text" class="form-control" id="firstName" formControlName="docFirstName" placeholder="First Name">				
+				</div>
+			</div>			
+			<div class="col-sm-6">
+				<label for="" class="">Last Name</label> <span class="required-icon">*</span>
+				<input type="text" class="form-control" id="lastName" formControlName="docLastName" placeholder="Last Name" >
+			</div>				
+		</div><!-- row ends -->
+	 </div>
+	 <div class="form-group">
+		<div class="row">	
+			<div class="col-sm-6">				
+				<label for="" class="">
+					Select your Specialization
+				</label> <span class="required-icon">*</span>
+				<select class="custom-select" id="specialization" formControlName="selectedSpecId" required="">
+					<option value="">Select</option>
+					<option value="{{specialization.litDocSpecalizeId}}" *ngFor="let specialization of docSpecList">
+						{{specialization.specializationName}}
+					</option>
+				</select>				
+			</div>			
+			<div class="col-sm-6">
+				<label for="" class="">
+					Select your Qualification
+				</label> <span class="required-icon">*</span>
+				<ng-select [items]="qualificationList"
+					bindLabel="qualificationName"
+					bindValue="qualificationId"
+					[multiple]="true"
+					placeholder="Select Qulifications"
+					formControlName="seletedQualIds">
+				</ng-select>
+			</div>				
+		</div><!-- row ends -->		 
+	 </div>
+	 <div class="form-group">
+		<div class="row">	
+			<div class="col-sm-6">				
+				<label for="" class="">Select Language (Multiple)</label> <span class="required-icon">*</span>
+				<!-- <select multiple="multiple" class="form-control js-example-basic-multiple" id="language" placeholder="Select Languages" formControlName="selectedLangIds" >
+						 <option value="">Select</option> 
+						<option value="{{languageDto.languageId}}" *ngFor="let languageDto of languageList">
+							{{languageDto.language}}
+						</option>					
+				</select> -->
+				 
+					<ng-select class="js-example-basic-multipl " 
+							[items]="languageList"
+							bindLabel="language"
+							bindValue="languageId"
+							[multiple]="true"
+							placeholder="Select Languages"
+							formControlName="selectedLangIds">
+					</ng-select>
+				 
+			</div>	
+			<div class="col-sm-6">
+				<label for="" class="">Email</label> <span class="required-icon">*</span>
+				<input type="email" class="form-control" maxlength="50" (change)="ValidateEmail();" id="emailId" formControlName="emailId" placeholder="example@xxx.yyy" > 
+			</div>				
+		</div><!-- row ends -->		 
+	 </div>	 
+	 <div class="form-group">
+		<div class="row">						
+			<div class="col-sm-3">
+				<label for="" class="">Experience (Years)</label> <span class="required-icon">*</span>
+				<input type="text" class="form-control phone-number" maxlength="2" id="experience" formControlName="expYears"  placeholder="" > 
+			</div>		
+			
+			<div class="col-sm-5">
+				<label for="docImg" class="">Profile Image</label> <span class="required-icon">*</span>
+				<div class="custom-file">
+				  <input  type="file" class="custom-file-input"  (change)="profilePicUpload($event)" accept="image/*" id="docImg" >
+				  <label class="custom-file-label" for="docImg">Choose file</label>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<label for="signature" class="">Upload Signature</label> <span class="required-icon">*</span>
+				<div class="custom-file">
+				  <input type="file" class="custom-file-input" id="signature" (change)="signUpload($event)" value="">
+				  <label class="custom-file-label" for="Signature">Choose file</label>
+				</div>
+			</div>		
+			
+			
+		</div><!-- row ends -->		 
+
+
+	 </div>		 
+ 
+	 <div class="form-group">
+		<div class="row">		
+			<div class="col-sm-6">
+				<label for="mciRegNo" class="">MCI Registration Number (MBBS or equivalent)</label> <span class="required-icon">*</span>
+				<input type="text" class="form-control" maxlength="20" placeholder="" id="mciRegNo" formControlName="mciNo" > 
+			</div>
+			<div class="col-sm-6">
+				<label for="certificate" >MCI Certificate (MBBS or Equivalent)</label> <span class="required-icon">*</span>
+				<div class="custom-file">
+				  <input type="file" class="custom-file-input" id="certificate" (change)="certificateUpload($event)" >
+				  <label class="custom-file-label" for="certificate">Choose file</label>
+				</div>
+			</div>			
+		</div><!-- row ends -->		 
+	 </div>	 
+	 <div class="form-group">
+		<div class="row">		
+			<div class="col-sm-6">
+				<label for="mciRegNo_md" class="">MCI Registration Number (MD or equivalent)</label>
+				<input type="text" class="form-control" maxlength="20" id="mciRegNo_md" formControlName="mciRegNo_md" placeholder="" > 
+			</div>
+			<div class="col-sm-6">
+				<label  for="certificate_md" class="">MCI Certificate (MD or Equivalent)</label>
+				<div class="custom-file">
+				  <input type="file" class="custom-file-input" id="certificate_md" (change)="certificatemdUpload($event)" value="">
+				  <label class="custom-file-label" for="certificate_md">Choose file</label>
+				</div>
+			</div>			
+		</div><!-- row ends -->		 
+	 </div>		 
+	 <div class="form-group">
+		<div class="row">		
+			<div class="col-sm-6">
+				<label for="mciRegNo_dm" class="">MCI Registration Number (DM or equivalent)</label>
+				<input type="text" class="form-control" maxlength="20" id="mciRegNo_dm" formControlName="mciRegNo_dm"  placeholder="" > 
+			</div>
+			<div class="col-sm-6">
+				<label for="certificate_dm" class="">MCI Certificate (DM or Equivalent)</label>
+				<div class="custom-file">
+				  <input type="file" class="custom-file-input" id="certificate_dm" (change)="certificateDmUpload($event)" value="">
+				  <label class="custom-file-label" for="certificate_dm">Choose file</label>
+				</div>
+			</div>			
+		</div><!-- row ends -->		 
+	 </div>
+
+	<div class="form-group">
+		<div class="row">
+			<div class="col-sm-6">
+				<label for="" class="">Mobile Number</label> <span class="required-icon">*</span>
+				<div class="input-group">
+					<input type="text" class="form-control phone-number" maxlength="10"  id="mobNumber" formControlName="mobNumber" placeholder="" >				
+					<div class="input-group-append">
+						<button type="button" class="btn btn-info btn-otp" id="OTP_send" [disabled]="isDisabled" (click)="generateOTP()" >Send OTP</button>
+					</div>
+				</div>				
+			</div>
+			<div class="col-sm-6">
+				<label for="" class="">Enter OTP</label> <span class="required-icon">*</span>
+				<div class="input-group">
+					<input type="text" class="form-control otp" id="txtotp" formControlName="txtotp" maxlength="10"  placeholder="" >				
+					<div class="input-group-append">
+						<button type="button" class="btn btn-info btn-otp" id="OTP" (click)="validateOTP()">Validate OTP</button>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<div class="row">
+			<div class="col-sm-12">
+				<label class="required-note"><span class="required-icon">*</span> fields are mandatory & Only jpg, png, jpeg are allowed for document</label>
+			</div>
+			<div class="col-sm-12">
+				<a href="#" onclick="formSubmit();">
+					<input class="btn btn-primary btn-lg" type="submit" value="Submit">
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- row ends -->
+</div>
+</div>
+</div>
+</form>
+</div><!-- content-block ends -->
+<!-- <pre>{{this.registrationForm.value | json}}</pre>  -->
+<!-- <app-default-footer></app-default-footer> -->
+<footer class="text-center">
+		<div class="container">
+			<div class="row">
+			<div class="col-xs-12">
+				<p>Copyright © Glocal Healthcare Systems. All rights reserved.</p>
+			</div>
+			</div>
+		</div>
+	</footer> 
+</body>
+</html>

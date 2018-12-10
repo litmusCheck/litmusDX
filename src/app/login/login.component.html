@@ -1,0 +1,116 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LitmusDX</title>
+<!-- <link href="https://fonts.googleapis.com/css?famil=yRoboto" rel="stylesheet"> -->
+
+<!-- Bootstrap -->
+<!-- <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css"> -->
+
+
+<!--HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container login_page">
+  <div class="row">
+	<div class="col-md-4 align-center">
+	  <div class="logo-holder">
+				<img src="../../assets/images/logo_litmusDx.png" alt="LitmusDX" width="" height="" />
+	  </div>
+		</div>
+	<div class="col-md-7">
+	  <div class="login-panel">
+				<h3 class="align-center txt-white"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Doctor Login</h3>
+				<div class="inputs">				
+				  <div class="row">
+		
+					<form action="" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+						<ul class="input-holder form-group" >
+						  <li class="col-md-4">Email</li>
+              <li class="col-md-8"><input class="form-control" type="text" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" >
+                    <span *ngIf="f.email.errors.required"><font  style="color:red">User name is required</font></span>
+                </div> 
+              </li>
+						  <li class="col-md-4">Password</li>
+              <li class="col-md-8"><input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors">
+                    <span *ngIf="f.password.errors.required" ><span><font style="color:red">Password is required</font></span></span>
+                </div> 
+							</li>
+							<!--  loading gif show when it makes to login api calls
+								<div *ngIf="submitted && !(validateLogin)" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> 
+							-->
+						  <li class="col-md-4">&nbsp;</li>
+							<li class="col-md-8"><button type="submit"  class="btn btn-md btn-success login-button">Login</button>
+								<div *ngIf="submitted && validateLogin">
+									<span><font style="color:red">Invalid user name or Password</font></span>
+								</div>
+							</li>
+							
+						  <li class="col-md-4">&nbsp;</li>
+						  <li class="col-md-8 text-small"> <a role="button" (click)="changePass('forgotPassDlg')" >Forgot your password?</a><span style="float: right;">New User?  <a routerLink="new-register">Sign up</a></span></li>
+						</ul>
+						</form>						
+					</div>
+				  <hr class="partition"/>
+				  <div class="row align-center">
+						<h4 class ="align-center txt-white"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Find "Hellolyf for Doctors" in Playstore</h4>
+					<ul class="icon-holder">
+					  <li><img src="../../assets/images/icon_googlePlay.svg" width="225" /></li>
+					  <li><img src="../../assets/images/icon_qrCode.svg" width="70" /></li>
+			    	</ul>
+					</div>		  				
+		</div>
+		</div>
+		
+		<div class="disclaimer">
+			<p><b>DISCLAIMER:</b> The contents of LitmusDx are for informational purposes only, and do not provide a substitute for professional medical advice, diagnosis, or treatment. LitmusDx does not recommend or endorse any specific tests, procedures, opinions, or other information that may be mentioned herein. Your signup implies that you have assumed complete accountability for the use of this product, including but not limited to indemnification of LitmusDx and its team from any liabilities arising out of such use</p>
+		</div>
+		</div>
+	</div><!-- row ends -->
+</div>
+
+
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p>Copyright © Glocal Healthcare Systems. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
+<script src="../../node_modules/jquery/dist/jquery.min.js"></script> 
+ Include all compiled plugins (below), or include individual files as needed  
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script> --> 
+</body>
+
+<!-- modal start from here -->
+<jw-modal id="forgotPassDlg" spellcheck="true" draggable="true"  style="animation: alternate; background-position-x: 0%; background-position-y: 0%">
+    <h1 class="dlgheader">Change Password:</h1>
+		<p>Register EmailId :<input type="text" [(ngModel)]="emailForPassChange"></p>
+		<div *ngIf ="!checkerOTP">
+				<button (click)="sendOtp();">sendOtp</button>
+		</div>
+		<div *ngIf ="checkerOTP">
+				Enter OTP:<input type="text" [(ngModel)]="otp">
+				<button (click)="verifyOTP();">Verify</button>
+		</div>
+		<div *ngIf ="verifyOTPValue">
+				<p>Enter New Password: &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" [(ngModel)]="newPass" placeholder="New Password"></p>
+				<p>ReEnter New Password:&nbsp; &nbsp;&nbsp; <input type="text" [(ngModel)]="newPassCheck" placeholder="New Password"></p>	
+				<button (click)="changePassword();">changePassword</button>
+		</div>
+    <button (click)="closeModal('forgotPassDlg');">Close</button>
+  </jw-modal>
+</html>

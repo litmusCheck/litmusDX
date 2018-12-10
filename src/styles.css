@@ -1,0 +1,305 @@
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+   height:100%;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #666;  
+  margin: 0;  
+  position: relative;
+  opacity: 1;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color:#f8f8f8;
+}
+
+a {
+  background-color: transparent;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Header Syle ##############################*/
+
+header, .header {
+	position:relative;
+	background:#fff;
+}
+header .navbar-fixed-top {
+	-webkit-transition: all 0.2s ease-out 0.1s;
+    -moz-transition: all 0.2s ease-out  0.1s;
+    -o-transition: all 0.2s ease-out  0.1s;
+    transition: all 0.2s ease-out  0.1s;
+}
+
+
+.brand-container {
+	position:relative;
+}
+.brand-container .navbar-brand, .brand-container .logo-part {
+	float:left;
+	position:relative;
+}
+.navbar-brand { margin-right:0.5em; float:left; }
+
+.navbar-brand img {
+	-webkit-transition: all 0.2s ease-out 0.1s;
+    -moz-transition: all 0.2s ease-out  0.1s;
+    -o-transition: all 0.2s ease-out  0.1s;
+    transition: all 0.2s ease-out  0.1s;
+}
+
+.brand-container .logo-part {
+	list-style:none;
+	margin:15px 0 0 0;
+	padding:0;
+}
+.logo-part li {
+	margin:0; padding:0;
+}
+.logo-part li.helpline-number { font-size:16px; line-height:20px;}
+.logo-part li.helpline-mail {font-size:13px; font-weight:300; line-height:13px;}
+.helpline-number img, .helpline-mail img {
+	display:inline-block;
+	margin-right:5px;
+}
+
+.logo-part li a { color: #004D82; text-decoration:none;}
+.logo-part li a:hover {color:#2aa7df; }
+
+/* Shrink nav style ####################### */
+
+header .nav-shrink {
+	background-color:#fff;
+	padding-top:5px;
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+	
+	-webkit-transition: all 0.2s ease-out 0.1s;
+    -moz-transition: all 0.2s ease-out  0.1s;
+    -o-transition: all 0.2s ease-out  0.1s;
+    transition: all 0.2s ease-out  0.1s;
+}
+header .nav-shrink .navbar-brand img {width:125px;}
+header .nav-shrink .logo-part{
+	margin-top:5px;
+}
+
+/* Content block Syle ##############################*/
+
+
+.content-block {
+	position:relative;
+	padding-top:100px;
+}
+.align-center{
+	text-align: center;
+}
+.logo-holder {
+	text-align: center;
+	padding-top: 150px;
+}
+.left-column {
+	position:relative;
+	height:500px;
+	background:url(assets/images/physician_02.png);
+	background-position:0% 100%;
+	background-repeat:no-repeat;
+}
+	@media (max-width: 480px) {
+	  .left-column {
+		 background-size: 240px auto, cover;
+		 background-position:50% 100%;
+	  }
+	}
+
+.registration-formHolder { 
+    background-color: #fff;
+    padding: 30px 40px 60px;
+    margin: 0 0px 60px;
+	border-radius: 8px 8px 8px 8px;
+	-moz-border-radius: 8px 8px 8px 8px;
+	-webkit-border-radius: 8px 8px 8px 8px;
+	
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+}
+.registration-formHolder label {
+	font-size:14px;
+	margin-bottom:5px;
+	color:#212529;
+}
+label.required-note {color:#666;}
+label.required-note span{color:#ff6666; padding:0 3px;}
+
+.input-group-addon:not(:last-child) {
+    border-right: 0;
+}
+.input-group .form-control:not(:last-child), .input-group-addon:not(:last-child), .input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn, .input-group-btn:not(:first-child) > .btn:not(:last-child):not(.dropdown-toggle), .input-group-btn:not(:last-child) > .btn, .input-group-btn:not(:last-child) > .btn-group > .btn, .input-group-btn:not(:last-child) > .dropdown-toggle {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+.input-group-addon {
+    padding: .5rem .75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.25;
+    color: #464a4c;
+    text-align: center;
+    background-color: #eceeef;
+    border: 1px solid rgba(0,0,0,.15);
+        border-right-color: rgba(0, 0, 0, 0.15);
+        border-right-style: solid;
+        border-right-width: 1px;
+    border-radius: .25rem;
+        border-top-right-radius: 0.25rem;
+        border-bottom-right-radius: 0.25rem;
+}
+.input-group-addon, .input-group-btn {
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.input-group .form-control, .input-group-addon, .input-group-btn {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+/* .col-form-label {
+} */
+.btn-otp {
+	padding-left:5px;
+	padding-right:5px;
+}
+.required-icon {
+	position:relative;
+	color:#ff6666;
+}
+.intro-text { 
+	font-family: Georgia, serif;
+	text-shadow:1px 1px 0 rgba(255,255,255, 1);
+}
+/*
+.intro-text:before {
+  content: '\201C';
+  margin-right: 0px;
+  margin-left: 0px;
+  font-size:50px;
+  line-height:30px;   
+}
+
+.intro-text:after {
+  content: '\201D';
+  margin-left: 4px;
+  margin-right: -8px;
+  font-size:50px;
+} */
+.intro-text span{ font-family: 'Roboto', sans-serif; font-size:35px; color:#004D82; }
+  .text-small { font-size: 12px;}
+  .text-small a { color: #88ad37 !important;}
+  .text-small a:hover{text-decoration: underline !important;}
+  .txt-white {color:#fff !important; }
+
+  .icon-holder {
+      position: relative;
+      list-style: none;
+      margin: 10px auto;
+      padding: 0;
+  }
+  .icon-holder li {
+      position: relative;
+      display: inline-block;
+      padding:5px;
+  }
+  .disclaimer {
+      padding: 25px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.20);
+      line-height: 13px;
+  }
+  footer { margin-top: 100px;}
+
+
+
+
+
+/* You can add global styles to this file, and also import other style files */
+jw-modal {
+    /* modals are hidden by default */
+  
+    display: none;
+  }
+  jw-modal .jw-modal {
+    /* modal container fixed across whole screen */
+  
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* z-index must be higher than .jw-modal-background */
+  
+    z-index: 1000;
+    /* enables scrolling for tall modals */
+  
+    overflow: auto;
+  }
+  jw-modal .jw-modal .jw-modal-body {
+    padding: 20px;
+    background: #fff;
+    /* margin exposes part of the modal background */
+  
+    margin: 40px;
+  }
+  jw-modal .jw-modal-background {
+    /* modal background fixed across whole screen */
+  
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* semi-transparent black  */
+  
+    background-color: #000;
+    opacity: 0.75;
+    /* z-index must be below .jw-modal and above everything else  */
+  
+    z-index: 900;
+  }
+  .jw-modal-open {
+    /* body overflow is hidden to hide main scrollbar when modal window is open */
+  
+    overflow: hidden;
+  }
+  
