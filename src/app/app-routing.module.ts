@@ -6,6 +6,7 @@ import { AuthGuard } from './_guard/auth.guard';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
+
 const routes: Route[] = [
   {
     path:'', 
@@ -46,7 +47,7 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
