@@ -183,7 +183,7 @@ export class RegisterFormComponent implements OnInit {
     }
   }
 
-  ValidateEmail(){
+  validateEmail(){
     if(this.registrationForm.controls.emailId.errors){
       alert('enter a valid email id');
     }
