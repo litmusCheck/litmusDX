@@ -194,11 +194,13 @@ export class RegisterFormComponent implements OnInit {
     this.submitted = true;
 
     //  All input fields Validation check and showing error messages ===> focus on first invalid element
+    
+    
     // if(this.registrationForm.controls.refferal.errors){
     //   alert("Please select refferal source!");
     //   return false;
     // }
-
+    
     if(this.registrationForm.controls.docFirstName.errors){
       alert("Please enter first name!");
        return ;

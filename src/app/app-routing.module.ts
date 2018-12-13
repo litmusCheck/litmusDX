@@ -24,6 +24,11 @@ const routes: Route[] = [
   //  },
   {
     path:'login/new-register',
+    redirectTo:'/new-register',
+    pathMatch:'full'
+  },
+  {
+    path:'login/new-register',
     component:RegisterFormComponent
   },
   {

@@ -49,5 +49,7 @@ export class HomeComponent implements OnInit {
               alert('Error while logout');
             }
           });
+          console.log(window.location.href);
+          window.open('http://www.google.com');
     }
 }
