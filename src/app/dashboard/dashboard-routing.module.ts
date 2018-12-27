@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { TestComponent } from './test/test.component';
+import { HelpandsupportComponent } from '../sharedfiles/helpandsupport/helpandsupport.component';
 
 const routes: Route[]= [
   {
@@ -16,6 +17,10 @@ const routes: Route[]= [
   {
     path:'test',
     component:TestComponent
+  },
+  {
+    path:'help&support',
+    component:HelpandsupportComponent
   }
 ];
 
@@ -23,6 +28,6 @@ const routes: Route[]= [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule { 
+export class DashboardRoutingModule {
 
 }

@@ -6,6 +6,11 @@ import { HelpandsupportComponent } from './helpandsupport/helpandsupport.compone
   imports: [
     CommonModule
   ],
-  declarations: [HelpandsupportComponent]
+  declarations: [
+    HelpandsupportComponent
+  ],
+  exports:[
+    HelpandsupportComponent
+  ]
 })
 export class SharedfilesModule { }

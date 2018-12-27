@@ -7,6 +7,7 @@ import { DefaultFooterComponent } from './default-footer/default-footer.componen
 import { DefaultHeaderComponent } from './default-header/default-header.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { FormsModule } from '@angular/forms';
+import { SharedfilesModule } from '../sharedfiles/sharedfiles.module';
 
 
 
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedfilesModule
   ],
   declarations: [
     TestComponent,
