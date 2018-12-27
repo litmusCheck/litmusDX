@@ -50,6 +50,5 @@ export class HomeComponent implements OnInit {
             }
           });
           console.log(window.location.href);
-          window.open('http://www.google.com');
     }
 }

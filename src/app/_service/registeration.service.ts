@@ -6,17 +6,21 @@ import { Language } from '../model/language';
 import { DocQualification } from '../model/doc-qualification';
 import { DocPreRegDtl } from '../model/doc-pre-reg-dtl';
 import { ResponseDto } from '../model/response-dto';
+import { Constants } from '../model/constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterationService {
  
+  constants:Constants;
   constructor(private http: HttpClient) {
-   
+    this.constants = new Constants();
    }
   getDocSpecilazion(): Observable<DocSpecilization[]> {
-    return this.http.get<DocSpecilization[]>("https://medikate.org/glclapitest/docspecilizations/available");
+    var str: string= this.constants.serviceEndPoint +"/docspecilizations/available";
+    //alert(str);
+    return this.http.get<DocSpecilization[]>(str);
   }
 
   getLanguageList(): Observable<Language[]>   {

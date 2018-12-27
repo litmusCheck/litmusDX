@@ -8,6 +8,7 @@ import { CustomerLoginService } from '../_service/customer-login.service';
 import { DialogOpenService } from '../_service/dialog-open.service';
 import { User } from '../model/user';
 import { HttpClient } from '@angular/common/http';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 @Component({
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
     private loginService: CustomerLoginService,
     private dialogOpenService: DialogOpenService,
     private http: HttpClient,
+    private flashMessage:FlashMessagesService
   ) {
     this.userInput = new Doclogindtl();
     this.docDtl = new User();
@@ -71,14 +73,14 @@ export class LoginComponent implements OnInit {
     
     this.loginService.login(
       this.userInput
-    )
-      .subscribe(
+    ).subscribe(
         r => {
           this.docDtl = r;
           if (null !== r.resStatus) {
             this.authenticationService.setToken(r.resStatus, JSON.stringify(this.docDtl));
             this.validateLogin = !(this.authenticationService.isLogged());
             this.router.navigate(['/', 'dashboard']);
+            this.flashMessage.show('show successfull messages', { cssClass: 'alert-success', timeout: 2000 });
             console.log(this.docDtl);
           }
         },

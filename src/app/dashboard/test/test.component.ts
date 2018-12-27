@@ -10,11 +10,24 @@ export class TestComponent implements OnInit {
 
   constructor(
     private testservice: AlertService,
-  ) { }
+  ) {
+      // setInterval(()=>{
+      //   this.setalert(); },2000
+      // );
+   }
 
   ngOnInit() {
   }
   function(){
     this.testservice.putalert();
   }
+
+  setalert(){
+    alert('lets go');
+  }
+  
+  setalert2(){
+    alert('rightnow');
+  }
+    
 }

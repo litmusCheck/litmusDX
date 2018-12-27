@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FlashMessagesService} from 'angular2-flash-messages/module';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'litmusDX';
 
-  constructor(){
+  constructor(private flashMessage:FlashMessagesService){
 
   }
   
   ngOnInit(){
    
   }
- 
+  showMessages(){
+    alert('funtion called');
+    this.flashMessage.show('show successfull messages', { cssClass: 'alert-success', timeout: 2000 });
+  }
 
 }

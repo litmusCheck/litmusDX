@@ -9,13 +9,13 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 
 const routes: Route[] = [
   {
+    path:'login',
+    component:LoginComponent
+  },
+  {
     path:'', 
     redirectTo:'/login',
     pathMatch:'full'
-  },
-  {
-    path:'login',
-    component:LoginComponent
   },
   // {
   //   path:'dashboard',
@@ -23,13 +23,13 @@ const routes: Route[] = [
   //   canActivate:[AuthGuard]
   //  },
   {
-    path:'login/new-register',
-    redirectTo:'/new-register',
-    pathMatch:'full'
+    path:'new-register',
+    component:RegisterFormComponent
   },
   {
     path:'login/new-register',
-    component:RegisterFormComponent
+    redirectTo:'/new-register',
+    pathMatch:'full'
   },
   {
     path:'login/password-forgot',
@@ -42,9 +42,18 @@ const routes: Route[] = [
   },
   {
     path:'login/home',
-    redirectTo:'/home',
+    redirectTo:'/dashboard',
     pathMatch:'full'
   },
+  // {
+  //   path:'help&support',
+  //   loadChildren:'./test-module/test-module.module#TestModuleModule'
+  // },
+  // {
+  //   path:'login/help&support',
+  //   redirectTo:'/help&support',
+  //   pathMatch:'full'
+  // },
   {
     path:'**',
     component:PageNotFoundComponent
@@ -52,7 +61,8 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true})],
+  imports: [RouterModule.forRoot(routes, { useHash:true })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+}

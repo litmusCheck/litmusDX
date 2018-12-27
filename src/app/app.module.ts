@@ -16,6 +16,9 @@ import { ModalComponent } from './_directive/modal/modal.component';
 import { DialogOpenService } from './_service/dialog-open.service';
 import { RegisterationService } from './_service/registeration.service';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { FlashMessagesModule } from 'angular2-flash-messages/module';
+
+//import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     RegisterFormComponent,
     ForgotPasswordComponent,
     TestDirective,
-    ModalComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgSelectModule
+    NgSelectModule,
+    FlashMessagesModule.forRoot(),
   ],
   providers: [
     AuthenticationService,
@@ -41,6 +45,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CustomerLoginService,
     DialogOpenService,
     RegisterationService
+   // Location, { provide: LocationStrategy, useClass: PathLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

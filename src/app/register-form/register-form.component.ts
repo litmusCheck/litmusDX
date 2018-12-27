@@ -145,7 +145,7 @@ export class RegisterFormComponent implements OnInit {
     }else{
       count = parseInt(this.registrationForm.controls['countOtp'].value);
     }
-  
+    
     this.registrationForm.controls['countOtp'].setValue(count+1);
     alert('otp sent');
     if(parseInt(count)<parseInt("2")){

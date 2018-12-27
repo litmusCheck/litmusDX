@@ -6,11 +6,15 @@ import { HomeComponent } from './home/home.component';
 import { DefaultFooterComponent } from './default-footer/default-footer.component';
 import { DefaultHeaderComponent } from './default-header/default-header.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
+import { FormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    FormsModule
   ],
   declarations: [
     TestComponent,
@@ -18,6 +22,8 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
     DefaultFooterComponent,
     DefaultHeaderComponent,
     SideMenuComponent,
+  ],
+  exports: [
   ]
 })
 export class DashboardModule { }

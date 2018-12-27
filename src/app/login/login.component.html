@@ -19,6 +19,11 @@
     <![endif]-->
 </head>
 <body>
+	
+<!-- flash messages goes here
+<flash-messages></flash-messages>
+ -->
+
 <div class="container login_page">
   <div class="row">
 	<div class="col-md-4 align-center">
@@ -52,7 +57,7 @@
 						  <li class="col-md-4">&nbsp;</li>
 							<li class="col-md-8"><button type="submit"  class="btn btn-md btn-success login-button">Login</button>
 								<div *ngIf="submitted && validateLogin">
-									<span><font style="color:red">Invalid user name or Password</font></span>
+										<span><font style="color:red">Invalid user name or Password</font></span>
 								</div>
 							</li>
 							
