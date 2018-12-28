@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
             this.authenticationService.setToken(r.resStatus, JSON.stringify(this.docDtl));
             this.validateLogin = !(this.authenticationService.isLogged());
             this.router.navigate(['/', 'dashboard']);
-            this.flashMessage.show('show successfull messages', { cssClass: 'alert-success', timeout: 2000 });
+            //this.flashMessage.show('show successfull messages', { cssClass: 'alert-success', timeout: 2000 });
             console.log(this.docDtl);
           }
         },

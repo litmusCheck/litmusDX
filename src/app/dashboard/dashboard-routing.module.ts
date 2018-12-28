@@ -21,6 +21,14 @@ const routes: Route[]= [
   {
     path:'help&support',
     component:HelpandsupportComponent
+  },
+  {
+    path:'profile-settings',
+    loadChildren:'./user-settings/user-settings.module#UserSettingsModule',
+  },
+  {
+    path:'consultations',
+    loadChildren:'./consultation-page/consultation-page.module#ConsultationPageModule',
   }
 ];
 
