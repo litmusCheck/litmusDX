@@ -5,6 +5,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AuthGuard } from './_guard/auth.guard';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AppComponent } from './app.component';
+import { ApplicationStatusComponent } from './application-status/application-status.component';
+//import { TestComponent } from './dashboard/test/test.component';
 
 
 const routes: Route[] = [
@@ -45,6 +48,14 @@ const routes: Route[] = [
     redirectTo:'/dashboard',
     pathMatch:'full'
   },
+  {
+    path:'applicationStatus',
+    component:ApplicationStatusComponent
+  },
+  {
+    path:'app',
+    component:AppComponent
+  },
   // {
   //   path:'help&support',
   //   loadChildren:'./test-module/test-module.module#TestModuleModule'
@@ -54,6 +65,10 @@ const routes: Route[] = [
   //   redirectTo:'/help&support',
   //   pathMatch:'full'
   // },
+  // {
+  //   path:'usepipe',
+  //   component:TestComponent
+  // },
   {
     path:'**',
     component:PageNotFoundComponent
@@ -61,7 +76,8 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash:true })],
+ // imports: [RouterModule.forRoot(routes, { useHash:true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { 

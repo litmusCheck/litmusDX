@@ -1,5 +1,5 @@
 export class Constants {
-     serviceEndPoint: String;
+     serviceEndPoint: string;
     constructor(){ 
     	//serciveEndPoint = "https://medikate.org/glclapi";
     	//serciveEndPoint = "https://medikate.org/glclapitest";

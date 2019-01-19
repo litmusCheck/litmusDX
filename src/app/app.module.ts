@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthenticationService } from './_service/authentication.service';
@@ -17,8 +17,12 @@ import { DialogOpenService } from './_service/dialog-open.service';
 import { RegisterationService } from './_service/registeration.service';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FlashMessagesModule } from 'angular2-flash-messages/module';
+import { DashboardService } from './_service/dashboard.service';
+import { LocationStrategy, PathLocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LiveHeaderService } from './_service/live-header.service';
+import { ApplicationStatusComponent } from './application-status/application-status.component';
+import { PatientQueueManageService } from './_service/patient-queue-manage.service';
 
-//import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,8 @@ import { FlashMessagesModule } from 'angular2-flash-messages/module';
     RegisterFormComponent,
     ForgotPasswordComponent,
     TestDirective,
-    ModalComponent
+    ModalComponent,
+    ApplicationStatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +42,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages/module';
     ReactiveFormsModule,
     HttpClientModule,
     NgSelectModule,
+    HttpClientJsonpModule,
     FlashMessagesModule.forRoot(),
   ],
   providers: [
@@ -44,8 +50,11 @@ import { FlashMessagesModule } from 'angular2-flash-messages/module';
     AlertService,
     CustomerLoginService,
     DialogOpenService,
-    RegisterationService
-   // Location, { provide: LocationStrategy, useClass: PathLocationStrategy}
+    RegisterationService,
+    DashboardService,
+    LiveHeaderService,
+    PatientQueueManageService,
+   {provide: LocationStrategy, useClass: PathLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

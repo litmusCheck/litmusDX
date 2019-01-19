@@ -27,7 +27,7 @@ const routes: Route[]= [
     loadChildren:'./user-settings/user-settings.module#UserSettingsModule',
   },
   {
-    path:'consultations',
+    path:'patientQueue',
     loadChildren:'./consultation-page/consultation-page.module#ConsultationPageModule',
   }
 ];
@@ -37,5 +37,4 @@ const routes: Route[]= [
   exports: [RouterModule]
 })
 export class DashboardRoutingModule {
-
 }

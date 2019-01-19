@@ -1,27 +1,5 @@
-<html>
-  <body>
-      <div>
-            <app-header></app-header> 
-            <a type="button" routerLink="home">Home</a>
-      </div>
-      <div>
-            <app-side-menu></app-side-menu>
-      </div>
-
-      <div class="newRow">
-          <h3 class="header-doctor">Welcome Dr. {{docLName}}</h3>
-          <li class="col-md-8"><button (click)="logout()" type="button"  class="btn btn-md btn-success login-button">Logout</button>
-      </div>
-      <div>
-        <a routerLink="help&support" >
-          help&support
-        </a>
-      </div>
-      <DIV>
-        <a routerLink="test" >
-          open test component
-        </a>
-      </DIV>
-      <app-footer></app-footer>
-  </body>
-</html>
+<div class="newRow">
+  <h3 class="header-doctor">Welcome Dr. {{docLName}}</h3>
+  <li class="col-md-8"><button (click)="logout()" type="button"  class="btn btn-md btn-success login-button">Logout</button>
+  <button (click)="test()" type="button">Test</button>
+</div>

@@ -1,5 +1,5 @@
 export class Doclogindtl {
-    address: string;
+     address: string;
      countryName: string; 
      latitude: string;
      loginMode: string;

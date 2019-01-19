@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { Route, RouterModule } from '@angular/router';
+import { PatientCardComponent } from './patient-card/patient-card.component';
 
 const routes: Route[]= [
   {
@@ -9,7 +10,7 @@ const routes: Route[]= [
     component:MainpageComponent
   },
   {
-    path:'/consultation',
+    path:'/patientQueue',
     redirectTo:'',
     pathMatch:'full'
   }
@@ -19,6 +20,6 @@ const routes: Route[]= [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MainpageComponent]
+  declarations: [MainpageComponent, PatientCardComponent]
 })
 export class ConsultationPageModule { }

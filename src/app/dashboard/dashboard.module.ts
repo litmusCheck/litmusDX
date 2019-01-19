@@ -6,17 +6,19 @@ import { HomeComponent } from './home/home.component';
 import { DefaultFooterComponent } from './default-footer/default-footer.component';
 import { DefaultHeaderComponent } from './default-header/default-header.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedfilesModule } from '../sharedfiles/sharedfiles.module';
-
-
+import { ConcatestrPipe } from '../_pipe/concatestr.pipe';
+import { SingleeleComponent } from './singleele/singleele.component';
+import { ChangePasswordOnloginComponent } from './change-password-onlogin/change-password-onlogin.component';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
     FormsModule,
-    SharedfilesModule
+    SharedfilesModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     TestComponent,
@@ -24,8 +26,14 @@ import { SharedfilesModule } from '../sharedfiles/sharedfiles.module';
     DefaultFooterComponent,
     DefaultHeaderComponent,
     SideMenuComponent,
+    ConcatestrPipe,
+    SingleeleComponent,
+    ChangePasswordOnloginComponent
   ],
   exports: [
+    TestComponent,
   ]
 })
-export class DashboardModule { }
+export class DashboardModule {
+  
+}

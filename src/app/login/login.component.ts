@@ -38,12 +38,13 @@ export class LoginComponent implements OnInit {
     private dialogOpenService: DialogOpenService,
     private http: HttpClient,
     private flashMessage:FlashMessagesService
-  ) {
-    this.userInput = new Doclogindtl();
-    this.docDtl = new User();
-  }
+    ) {
+      this.userInput = new Doclogindtl();
+      this.docDtl = new User();
+    }
 
   ngOnInit() {
+   // this.testmessagess();
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -58,6 +59,10 @@ export class LoginComponent implements OnInit {
 
   get f() { return this.loginForm.controls; }
 
+  testmessagess(){
+    this.flashMessage.show('show successfull messages', { cssClass: 'alert-success', timeout: 2000 });    
+  }
+
   onSubmit() {
     this.submitted = true;
     this.validateLogin = false;
@@ -70,35 +75,63 @@ export class LoginComponent implements OnInit {
 
     this.userInput.userId = this.f.email.value;
     this.userInput.loginPwd = this.f.password.value;
-    
-    this.loginService.login(
-      this.userInput
-    ).subscribe(
-        r => {
-          this.docDtl = r;
-          if (null !== r.resStatus) {
-            this.authenticationService.setToken(r.resStatus, JSON.stringify(this.docDtl));
-            this.validateLogin = !(this.authenticationService.isLogged());
-            this.router.navigate(['/', 'dashboard']);
-            //this.flashMessage.show('show successfull messages', { cssClass: 'alert-success', timeout: 2000 });
-            console.log(this.docDtl);
+     this.loginService.getLitmusUserLogindTL(this.userInput).subscribe(
+      resp => {
+        this.docDtl = resp;
+        console.log(this.docDtl);
+        if (this.docDtl) {
+          let value = JSON.stringify(this.docDtl);
+          let key = "LITMUS_USER_DETAILS";
+          if(this.docDtl.resStatus === '1' || this.docDtl.resStatus === '3'){
+            this.authenticationService.setAuthKey(key,value);
+          }else if((this.docDtl.resStatus === '4')|| (this.docDtl.resStatus === '5')){
+            let key2 = "APPLI_STATUS";
+            let value2= JSON.stringify(this.docDtl);;
+            this.authenticationService.setAuthKey(key2,value2); 
+          }else{
+            alert("invalid user mail or password");
           }
-        },
-        r => {
-          alert('Error while login:');
-        });
+          this.validateLogin = !(this.authenticationService.isLoggedIn());
+          if(this.docDtl.resStatus === '1'){
+            this.router.navigate(['/', 'dashboard']);
+          }else if(this.docDtl.resStatus === '3'){
+            this.router.navigate([ 'dashboard/profile-settings']);
+          }
+        if((this.docDtl.resStatus === '4')|| (this.docDtl.resStatus === '5')){
+            this.router.navigate(['/', 'applicationStatus']);
+          }
+        }else{
+          alert('Error while login (Error in api call)')
+        }
+      });
 
-    // this.authenticationService.login(this.f.username.value, this.f.password.value)
-    //     .pipe(first())
-    //     .subscribe(
-    //         data => {
-    //             this.router.navigate([this.returnUrl]);
-    //         },
-    //         error => {
-    //             this.alertService.error(error);
-    //             this.loading = false;
-    //         });
-           
+    // login(userInput: Doclogindtl ): string{
+    //   this.getLitmusUserLogindTL(userInput).subscribe(res=>{
+    //     this.litmusUserLoginDtl=res;
+    //     console.log(this.litmusUserLoginDtl);
+    //   });
+    //   if(this.litmusUserLoginDtl){
+    //     console.log('enter if statement after===>');
+    //     let value = JSON.stringify(this.litmusUserLoginDtl);
+    //     let key = "LITMUS_USER_DETAILS";
+    //       if(this.litmusUserLoginDtl.resStatus === '1'){
+    //         this.returnMsg="successful";
+    //         this.authenticationService.setAuthKey(key,value);
+    //         this.router.navigate(['/', 'dashboard']);
+    //        }else if(this.litmusUserLoginDtl.resStatus === '3'){
+    //         this.returnMsg="successful";
+    //         this.authenticationService.setAuthKey(key,value);
+    //         this.router.navigate([ 'dashboard/profile-settings']);
+    //       }else{
+    //         this.returnMsg=this.litmusUserLoginDtl.resMsg;
+    //       }
+    //     }else{
+    //       this.returnMsg = "Error in api call";
+    //   }
+
+    //   return this.returnMsg;
+    //  }
+
     }
 
     changePass(id: string){
@@ -107,7 +140,7 @@ export class LoginComponent implements OnInit {
     closeModal(id:string){
       this.dialogOpenService.close(id);
     }
-
+      
     sendOtp(){
       // verify register emailid
       
@@ -130,4 +163,5 @@ export class LoginComponent implements OnInit {
       //else 
       this.verifyOTPValue= true;
     }
+
 }
